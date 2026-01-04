@@ -1,0 +1,696 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: demo
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/json_process:0.0.2@dde6d7b676ccdcea89206d29232181a840170c19277d3d978e27cd1e3c92c707
+    version: null
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/moonshot:0.0.8@39b2074f0d4dd3a739eae2e6b8825ee8c7bc0b4ebda817decafe1d368c84fae2
+    version: null
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai:0.0.12@604c1a752a92633a354dc7eea717248314f23bab66a9ce48d33b1c57a0f9463e
+    version: null
+kind: app
+version: 0.5.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_batch_limit: 10
+        image_file_size_limit: 10
+        single_chunk_attachment_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 1767495699156-source-1767495876098-target
+      source: '1767495699156'
+      sourceHandle: source
+      target: '1767495876098'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: template-transform
+      id: 1767495876098-source-1767496482946-target
+      source: '1767495876098'
+      sourceHandle: source
+      target: '1767496482946'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: template-transform
+        targetType: answer
+      id: 1767496482946-source-answer-target
+      source: '1767496482946'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: question-classifier
+      id: 1741920741135-source-1767498416219-target
+      source: '1741920741135'
+      sourceHandle: source
+      target: '1767498416219'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: llm
+      id: 1767498416219-1767498492234-1767495699156-target
+      source: '1767498416219'
+      sourceHandle: '1767498492234'
+      target: '1767495699156'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: tool
+      id: 1767498416219-1-1767498732762-target
+      source: '1767498416219'
+      sourceHandle: '1'
+      target: '1767498732762'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: tool
+        targetType: answer
+      id: 1767498732762-source-1767498512274-target
+      source: '1767498732762'
+      sourceHandle: source
+      target: '1767498512274'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: tool
+      id: 1767498416219-1-17674987669700-target
+      source: '1767498416219'
+      sourceHandle: '1'
+      target: '17674987669700'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: answer
+      id: 17674987669700-source-1767498512274-target
+      source: '17674987669700'
+      sourceHandle: source
+      target: '1767498512274'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables: []
+      height: 73
+      id: '1741920741135'
+      position:
+        x: -479.7209946389089
+        y: 237
+      positionAbsolute:
+        x: -479.7209946389089
+        y: 237
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: '{{#1767496482946.output#}}'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 103
+      id: answer
+      position:
+        x: 638.5950784315834
+        y: 348.951612469662
+      positionAbsolute:
+        x: 638.5950784315834
+        y: 348.951612469662
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params: {}
+          mode: chat
+          name: gpt-4
+          provider: langgenius/openai/openai
+        prompt_template:
+        - edition_type: basic
+          id: 921e41e8-55c1-4661-afc6-a14de4ba8848
+          role: system
+          text: '从用户输入里提取购买信息。
+
+            只输出 JSON，不要输出其他文字。
+
+
+            字段：
+
+            - product_name: 用户要购买的产品名称（必填）
+
+            - qty: 数量（没有则为 1）
+
+
+            示例：
+
+            用户：我要购买A产品2件
+
+            输出：{"product_name":"A产品","qty":2}
+
+            '
+        - id: f7e2ff30-1a69-46aa-88a5-e86132c7a726
+          role: user
+          text: 用户输入:{{#sys.query#}}
+        selected: false
+        title: LLM
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '1767495699156'
+      position:
+        x: 285
+        y: 258
+      positionAbsolute:
+        x: 285
+        y: 258
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "def main(arg1: str):\n    import json\n    import time\n\n    # 1.\
+          \ 解析 LLM 返回的 JSON 字符串\n    try:\n        data = json.loads(arg1)\n    except\
+          \ Exception:\n        # 防御式返回\n        return {\n            \"product\"\
+          : \"UNKNOWN\",\n            \"qty\": 1,\n            \"unit_price\": 0,\n\
+          \            \"subtotal\": 0,\n            \"currency\": \"USD\",\n    \
+          \        \"shipping\": 0,\n            \"lead_time\": 0,\n            \"\
+          stock\": \"unknown\",\n            \"quote_id\": \"INVALID\"\n        }\n\
+          \n    product = data.get(\"product_name\", \"UNKNOWN\")\n    qty = int(data.get(\"\
+          qty\", 1))\n\n    unit_price = 199\n    subtotal = unit_price * qty\n\n\
+          \    return {\n        \"product\": product,\n        \"qty\": qty,\n  \
+          \      \"unit_price\": unit_price,\n        \"subtotal\": subtotal,\n  \
+          \      \"currency\": \"USD\",\n        \"shipping\": 25,\n        \"lead_time\"\
+          : 12,\n        \"stock\": \"in_stock\",\n        \"quote_id\": f\"DEMO-{int(time.time())}\"\
+          \n    }\n"
+        code_language: python3
+        outputs:
+          currency:
+            children: null
+            type: string
+          lead_time:
+            children: null
+            type: number
+          product:
+            children: null
+            type: string
+          qty:
+            children: null
+            type: number
+          quote_id:
+            children: null
+            type: string
+          shipping:
+            children: null
+            type: number
+          stock:
+            children: null
+            type: string
+          subtotal:
+            children: null
+            type: number
+          unit_price:
+            children: null
+            type: number
+        selected: false
+        title: 假 API 返回
+        type: code
+        variables:
+        - value_selector:
+          - '1767495699156'
+          - text
+          value_type: string
+          variable: arg1
+      height: 52
+      id: '1767495876098'
+      position:
+        x: 645
+        y: 218
+      positionAbsolute:
+        x: 645
+        y: 218
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        author: ElectronEraser
+        desc: ''
+        height: 88
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"这个地方我不想写接口统一返回一个假的数据但是效果一样","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""}],"direction":null,"format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 88
+      id: '1767495896273'
+      position:
+        x: 293.795842586699
+        y: 150.66355393991694
+      positionAbsolute:
+        x: 293.795842586699
+        y: 150.66355393991694
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+    - data:
+        selected: false
+        template: "<form data-format=\"json\">\r\n  <input\r\n    type=\"hidden\"\r\
+          \n    name=\"verify\"\r\n    value=\"xxxdemoxx01\" />\r\n      <input\r\n\
+          \    type=\"hidden\"\r\n    name=\"subtotal\"\r\n    value=\"{{ subtotal\
+          \ }}\" />\r\n      <input\r\n    type=\"hidden\"\r\n    name=\"currency\"\
+          \r\n    value=\"{{ currency }}\" />\r\n  <label>品名:</label>\r\n  <input\r\
+          \n    type=\"text\"\r\n    name=\"product\"\r\n    value=\"{{ product }}\"\
+          \r\n    disabled\r\n  />\r\n  <label>数量:</label>\r\n  <input\r\n    type=\"\
+          text\"\r\n    name=\"qty\"\r\n    value=\"{{ qty }}\"\r\n    required\r\n\
+          \  />\r\n\r\n  <button data-size=\"small\" data-variant=\"primary\">\r\n\
+          \    确认购买\r\n  </button>\r\n</form>\r\n"
+        title: 模板转换
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1767495876098'
+          - product
+          variable: product
+        - value_selector:
+          - '1767495876098'
+          - qty
+          variable: qty
+        - value_selector:
+          - '1767495876098'
+          - subtotal
+          variable: subtotal
+        - value_selector:
+          - '1767495876098'
+          - currency
+          variable: currency
+      height: 52
+      id: '1767496482946'
+      position:
+        x: 293.795842586699
+        y: 365.03338943962046
+      positionAbsolute:
+        x: 293.795842586699
+        y: 365.03338943962046
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        classes:
+        - id: '1'
+          name: 包含verify为xxxdemoxx01的json资料
+        - id: '1767498492234'
+          name: 其他
+        instructions: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: moonshot-v1-128k
+          provider: langgenius/moonshot/moonshot
+        query_variable_selector:
+        - '1741920741135'
+        - sys.query
+        selected: false
+        title: 问题分类器
+        type: question-classifier
+        vision:
+          enabled: false
+      height: 170
+      id: '1767498416219'
+      position:
+        x: -111.49066181975087
+        y: 270.63568190496744
+      positionAbsolute:
+        x: -111.49066181975087
+        y: 270.63568190496744
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: 已购买{{#1767498732762.text#}} ,{{#17674987669700.text#}}个
+        selected: false
+        title: 直接回复 2
+        type: answer
+        variables: []
+      height: 122
+      id: '1767498512274'
+      position:
+        x: 535.6059707351276
+        y: 542.3716746345938
+      positionAbsolute:
+        x: 535.6059707351276
+        y: 542.3716746345938
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        is_team_authorization: true
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: JSON data
+            ja_JP: JSON data
+            pt_BR: JSON数据
+            zh_Hans: JSON数据
+          label:
+            en_US: JSON data
+            ja_JP: JSON data
+            pt_BR: JSON data
+            zh_Hans: JSON数据
+          llm_description: JSON data to be processed
+          max: null
+          min: null
+          name: content
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: JSON fields to be parsed
+            ja_JP: JSON fields to be parsed
+            pt_BR: JSON fields to be parsed
+            zh_Hans: 需要解析的 JSON 字段
+          label:
+            en_US: JSON filter
+            ja_JP: JSON filter
+            pt_BR: JSON filter
+            zh_Hans: JSON解析对象
+          llm_description: JSON fields to be parsed
+          max: null
+          min: null
+          name: json_filter
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: true
+          form: form
+          human_description:
+            en_US: Ensure the JSON output is ASCII encoded
+            ja_JP: Ensure the JSON output is ASCII encoded
+            pt_BR: Ensure the JSON output is ASCII encoded
+            zh_Hans: 确保输出的 JSON 是 ASCII 编码
+          label:
+            en_US: Ensure ASCII
+            ja_JP: Ensure ASCII
+            pt_BR: Ensure ASCII
+            zh_Hans: 确保 ASCII
+          llm_description: ''
+          max: null
+          min: null
+          name: ensure_ascii
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: boolean
+        params:
+          content: ''
+          ensure_ascii: ''
+          json_filter: ''
+        plugin_id: langgenius/json_process
+        plugin_unique_identifier: langgenius/json_process:0.0.2@dde6d7b676ccdcea89206d29232181a840170c19277d3d978e27cd1e3c92c707
+        provider_icon: https://cloud.dify.ai/console/api/workspaces/current/plugin/icon?tenant_id=7c74a491-6d22-42d0-a910-3221ee349014&filename=2e9f75c0e5502c96a2dfdd557f425271f6b97a4b4ba5c6a5f017e0f933567d11.svg
+        provider_id: langgenius/json_process/json_process
+        provider_name: langgenius/json_process/json_process
+        provider_type: builtin
+        selected: false
+        title: JSON 解析
+        tool_configurations:
+          ensure_ascii:
+            type: constant
+            value: true
+        tool_description: 一个解析JSON对象的工具
+        tool_label: JSON 解析
+        tool_name: parse
+        tool_node_version: '2'
+        tool_parameters:
+          content:
+            type: mixed
+            value: '{{#sys.query#}}'
+          json_filter:
+            type: mixed
+            value: product
+        type: tool
+      height: 88
+      id: '1767498732762'
+      position:
+        x: 232.15987567013656
+        y: 542.3716746345938
+      positionAbsolute:
+        x: 232.15987567013656
+        y: 542.3716746345938
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        is_team_authorization: true
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: JSON data
+            ja_JP: JSON data
+            pt_BR: JSON数据
+            zh_Hans: JSON数据
+          label:
+            en_US: JSON data
+            ja_JP: JSON data
+            pt_BR: JSON data
+            zh_Hans: JSON数据
+          llm_description: JSON data to be processed
+          max: null
+          min: null
+          name: content
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: JSON fields to be parsed
+            ja_JP: JSON fields to be parsed
+            pt_BR: JSON fields to be parsed
+            zh_Hans: 需要解析的 JSON 字段
+          label:
+            en_US: JSON filter
+            ja_JP: JSON filter
+            pt_BR: JSON filter
+            zh_Hans: JSON解析对象
+          llm_description: JSON fields to be parsed
+          max: null
+          min: null
+          name: json_filter
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: true
+          form: form
+          human_description:
+            en_US: Ensure the JSON output is ASCII encoded
+            ja_JP: Ensure the JSON output is ASCII encoded
+            pt_BR: Ensure the JSON output is ASCII encoded
+            zh_Hans: 确保输出的 JSON 是 ASCII 编码
+          label:
+            en_US: Ensure ASCII
+            ja_JP: Ensure ASCII
+            pt_BR: Ensure ASCII
+            zh_Hans: 确保 ASCII
+          llm_description: ''
+          max: null
+          min: null
+          name: ensure_ascii
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: boolean
+        params:
+          content: ''
+          ensure_ascii: ''
+          json_filter: ''
+        plugin_id: langgenius/json_process
+        plugin_unique_identifier: langgenius/json_process:0.0.2@dde6d7b676ccdcea89206d29232181a840170c19277d3d978e27cd1e3c92c707
+        provider_icon: https://cloud.dify.ai/console/api/workspaces/current/plugin/icon?tenant_id=7c74a491-6d22-42d0-a910-3221ee349014&filename=2e9f75c0e5502c96a2dfdd557f425271f6b97a4b4ba5c6a5f017e0f933567d11.svg
+        provider_id: langgenius/json_process/json_process
+        provider_name: langgenius/json_process/json_process
+        provider_type: builtin
+        selected: false
+        title: JSON 解析 (1)
+        tool_configurations:
+          ensure_ascii:
+            type: constant
+            value: true
+        tool_description: 一个解析JSON对象的工具
+        tool_label: JSON 解析
+        tool_name: parse
+        tool_node_version: '2'
+        tool_parameters:
+          content:
+            type: mixed
+            value: '{{#sys.query#}}'
+          json_filter:
+            type: mixed
+            value: qty
+        type: tool
+      height: 88
+      id: '17674987669700'
+      position:
+        x: 218.76216813548342
+        y: 665.6653218219084
+      positionAbsolute:
+        x: 218.76216813548342
+        y: 665.6653218219084
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: 80.39130231293632
+      y: -93.76555123007131
+      zoom: 0.8705505632961241
+  rag_pipeline_variables: []
